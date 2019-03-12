@@ -28,6 +28,7 @@ SECRET_KEY = ENV.DJANGO_SECRET_KEY
 DEBUG = ENV.DEBUG
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'my_blog.User'
 
 # Application definition
 

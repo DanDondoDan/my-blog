@@ -14,5 +14,4 @@ class ArticleAdmin(admin.ModelAdmin):
     form = ArticleAdminForm
     list_display = ('header',
                     'content',
-                    'pub_date',
                     )
