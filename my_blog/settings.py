@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'my_blog',
     'disqus',
+    'django.contrib.sites',
 ]
 
 DISQUS_API_KEY = ENV.DISQUS_API_KEY

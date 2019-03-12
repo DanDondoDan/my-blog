@@ -15,3 +15,26 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display = ('header',
                     'content',
                     )
+
+class SubscriptionAdminForm(BaseForm):
+    class Meta:
+        model = models.Subscription
+        exclude = BaseForm.Meta.exclude
+
+
+@admin.register(models.Subscription)
+class SubscriptionAdmin(admin.ModelAdmin):
+    form = ArticleAdminForm
+    # list_display = ('subscrubers',)
+                    
+class ArticleReadAdminForm(BaseForm):
+    class Meta:
+        model = models.ArticleRead
+        exclude = BaseForm.Meta.exclude
+
+
+@admin.register(models.ArticleRead)
+class ArticleReadAdmin(admin.ModelAdmin):
+    form = ArticleReadAdminForm
+    list_display = ('post',)
+              
