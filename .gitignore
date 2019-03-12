@@ -1,0 +1,30 @@
+.DS_Store
+.idea
+*.swp
+*.pyc
+*.pyo
+.vscode
+
+# *.sqlite3
+# *.sqlite3-journal
+*.?env
+.env
+.venv
+
+staticfiles/
+redis-stable/
+*.log
+celerybeat-schedule
+celerybeat-schedule.*
+_build/
+_source/
+_static/
+_templates
+
+# Unit test / coverage reports
+.tox
+.pytest_cache
+
+local_settings.py
+
+venv/*
