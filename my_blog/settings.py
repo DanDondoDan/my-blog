@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from .config import ENV
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,11 +21,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'f36f40o_q^fi$s(biadqp1yvze)(^d0-0f8k90)o!78e^-v#gz'
 
+SECRET_KEY = ENV.DJANGO_SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
+DEBUG = ENV.DEBUG
 ALLOWED_HOSTS = []
 
 
@@ -51,6 +52,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'my_blog.urls'
+
+SITE_ID = 1
 
 TEMPLATES = [
     {
@@ -119,3 +122,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
