@@ -1,0 +1,11 @@
+{% load static %}
+{% block content %}
+    <p>{{ post.pub_date }}</p>
+    <h2>{{ post.header }}</h2>
+    <p>{{ post.content }}</p>
+    <p>
+        {% load disqus_tags %}
+        {% disqus_dev %}
+        {% disqus_show_comments %}
+    </p>
+{% endblock %}
