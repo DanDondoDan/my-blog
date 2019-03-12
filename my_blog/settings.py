@@ -39,7 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'my_blog',
+    'disqus',
 ]
+
+DISQUS_API_KEY = ENV.DISQUS_API_KEY
+DISQUS_WEBSITE_SHORTNAME = ENV.DISQUS_WEBSITE_SHORTNAME
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
