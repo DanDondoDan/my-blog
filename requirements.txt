@@ -2,3 +2,5 @@ Django==2.1.7
 pytz==2018.9
 git+https://github.com/DanDondoDan/pyenv.git
 django-disqus==0.5
+bootstrap4==0.1.0
+

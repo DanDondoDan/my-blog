@@ -23,13 +23,17 @@ class Article(BaseModel):
 
     def get_subs_emails(self):
         
-        emails = self.user.subscribers.subscribers.values_list('email', flat=True)
+        try:
+            emails = self.user.subscribers.values_list('email', flat=True)
+        except Subscription.DoesNotExist:
+            return []
+        return list(filter(None, emails))
         
 
     def send_notification(self):
             site = Site.objects.get_current()
-            html = render_to_string('my_blog/email/notification.txt', context={'post': self, 'site_url': site.domain})
-            body = render_to_string('my_blog/email/notification.html', context={'post': self, 'site_url': site.domain})
+            html = render_to_string('my_blog/email_notifications/notification.txt', context={'post': self, 'site_url': site.domain})
+            body = render_to_string('my_blog/email_notifications/notification.html', context={'post': self, 'site_url': site.domain})
             recipients = self.get_subs_emails()
             return send_mail('New post %s' % site.name, body, recipients, html_message=html)
                 

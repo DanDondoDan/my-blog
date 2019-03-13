@@ -62,13 +62,11 @@ class PostDetailView(DetailView):
 
 
 class HomeView(TemplateView):
-    template_name = 'home.html'
+    template_name = 'base.html'
 
     def get_context_data(self, **kwargs):
-        context = super(HomeView, self).get_context_data(**kwargs)
-        subscription = list(self.request.user.subscription.values_list('user_id', flat=True))
-        subscription.append(self.request.user.id)
-        context['posts'] = Article.objects.filter(user_id__in=subscription).prefetch_related('user').distinct()
+        context = super().get_context_data(**kwargs)
+        context['latest_articles'] = Article.objects.all()[:5]
         return context
 
 
@@ -90,4 +88,4 @@ class PostDeleteView(DeleteView):
         return get_object_or_404(Article, user_id=self.request.user.id, pk=self.kwargs.get('pk'))
 
     def get_success_url(self):
-        return reverse('blog:home')
+        return reverse('blog:base')
