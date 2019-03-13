@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'my_blog',
     'disqus',
     'django.contrib.sites',
+    'bootstrap4',
 ]
 
 DISQUS_API_KEY = ENV.DISQUS_API_KEY
@@ -60,6 +61,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'my_blog.urls'
 
 SITE_ID = 1
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 TEMPLATES = [
     {
