@@ -75,7 +75,7 @@ class PostReadView(View):
         try:
             post = Article.objects.exclude(user_id=request.user.id).get(pk=request.POST.get('post_id'))
         except Article.DoesNotExist:
-            return JsonResponse({'status': 'error', 'error': 'Пост не найден'})
+            return JsonResponse({'status': 'error', 'error': 'Post dont found'})
 
         ArticleRead.objects.get_or_create(user=request.user, post=post)
         return JsonResponse({'status': 'ok'})
