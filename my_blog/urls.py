@@ -17,12 +17,17 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from my_blog.views import article as views
-from my_blog.views.article import PostsListView, PostDetailView
+from my_blog.views.article import SubscribeView, BlogView, PostCreateView, PostDetailView, HomeView, PostReadView, PostDeleteView
 from django.conf.urls.static import static
 from my_blog import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('post-list/', PostsListView.as_view(), name='list'),
-    url(r'^(?P<pk>\d+)/$', PostDetailView.as_view()),
+    url(r'^$', views.HomeView.as_view(), name='home'),
+    url(r'^subscribe/$', SubscribeView.as_view(), name='subscribe'),
+    url(r'^blog/create/$', PostCreateView.as_view(), name='create'),
+    url(r'^blog/read/$', PostReadView.as_view(), name='read'),
+    url(r'^blog/(?P<pk>[0-9]+)/$', BlogView.as_view(), name='user'),
+    url(r'^blog/(?P<pk>[0-9]+)/delete/$', PostDeleteView.as_view(), name='delete'),
+    url(r'^blog/(?P<user_id>[0-9]+)/(?P<pk>[0-9]+)/$', PostDetailView.as_view(), name='detail'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

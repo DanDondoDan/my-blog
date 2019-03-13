@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, CreateView, View, TemplateView, DeleteView
 
-from my_blog.decorators import authorized_only
+from my_blog.decorator.authorized import authorized_only
 from my_blog.forms import ArticleForm
 from my_blog.models import Article, Subscription, ArticleRead
 
